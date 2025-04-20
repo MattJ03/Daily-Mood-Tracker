@@ -8,7 +8,7 @@ android {
 
     defaultConfig {
         applicationId "com.example.dailymoodtracker"
-        minSdk 24
+        minSdk 25
         targetSdk 35
         versionCode 1
         versionName "1.0"
@@ -29,7 +29,7 @@ android {
 }
 
 dependencies {
-
+    def fragment_version = "1.8.6"
     implementation libs.appcompat
     implementation libs.material
     implementation libs.activity
