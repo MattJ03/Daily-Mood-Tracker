@@ -28,7 +28,9 @@ public class LogIn  extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 if(username.getText().toString().isEmpty() && !password.getText().toString().isEmpty()) {
-                    Toast.makeText(LogIn.this, "Enter Username", Toast.LENGTH_LONG).show();
+                    Toast.makeText(LogIn.this, "Username is empty", Toast.LENGTH_LONG).show();
+                } else if(!username.getText().toString().isEmpty() && password.getText().toString().isEmpty()) {
+                    Toast.makeText(LogIn.this, "Password is empty", Toast.LENGTH_LONG).show();
                 }
             }
         });
