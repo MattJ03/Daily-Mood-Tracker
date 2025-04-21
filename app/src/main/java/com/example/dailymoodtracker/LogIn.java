@@ -37,7 +37,7 @@ public class LogIn  extends AppCompatActivity {
                 } else if(username.getText().toString().isEmpty() && password.getText().toString().isEmpty()) {
                     Toast.makeText(LogIn.this, "Enter log in details", Toast.LENGTH_LONG).show();
                 } else {
-                    Intent intent = new Intent(LogIn.this, MainActivity.class);
+                    Intent intent = new Intent(LogIn.this, Welcome.class);
                     intent.putExtra("username", username.getText().toString());
                     startActivity(intent);
                 }

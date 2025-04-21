@@ -10,14 +10,14 @@ import android.os.Handler;
 
 public class Welcome extends AppCompatActivity {
 
-    TextView welcomeText;
+    EditText welcomeText;
     Runnable changeScreen;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.welcome);
 
-        welcomeText = findViewById(R.id.textViewWelcome);
+        welcomeText = findViewById(R.id.editTextText);
 
         welcomeMessage();
 
@@ -26,7 +26,6 @@ public class Welcome extends AppCompatActivity {
            startActivity(intent);
            finish();
        }, 4000);
-
 
     }
 
