@@ -31,6 +31,8 @@ public class LogIn  extends AppCompatActivity {
                     Toast.makeText(LogIn.this, "Username is empty", Toast.LENGTH_LONG).show();
                 } else if(!username.getText().toString().isEmpty() && password.getText().toString().isEmpty()) {
                     Toast.makeText(LogIn.this, "Password is empty", Toast.LENGTH_LONG).show();
+                } else if(username.getText().toString().isEmpty() && password.getText().toString().isEmpty()) {
+                    Toast.makeText(LogIn.this, "Enter log in details", Toast.LENGTH_LONG).show();
                 }
             }
         });
