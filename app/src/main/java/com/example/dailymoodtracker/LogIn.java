@@ -1,6 +1,8 @@
 package com.example.dailymoodtracker;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import android.content.Intent;
 import android.os.Bundle;
 import android.Manifest;
 import android.view.View;
@@ -33,6 +35,9 @@ public class LogIn  extends AppCompatActivity {
                     Toast.makeText(LogIn.this, "Password is empty", Toast.LENGTH_LONG).show();
                 } else if(username.getText().toString().isEmpty() && password.getText().toString().isEmpty()) {
                     Toast.makeText(LogIn.this, "Enter log in details", Toast.LENGTH_LONG).show();
+                } else {
+                    Intent intent = new Intent(LogIn.this, MainActivity.class);
+                    startActivity(intent);
                 }
             }
         });
