@@ -26,6 +26,9 @@
         <activity android:name=".TOC">
 
         </activity>
+        <activity android:name=".Welcome">
+
+        </activity>
 
         <!-- Main activity, used after login -->
         <activity android:name=".MainActivity"

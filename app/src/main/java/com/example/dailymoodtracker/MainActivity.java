@@ -37,6 +37,7 @@ public class MainActivity extends AppCompatActivity {
 
         time = findViewById(R.id.editTextTime);
         welcome = findViewById(R.id.textWelcome);
+
         settingsImage = findViewById(R.id.imageViewSettings);
         profileImage = findViewById(R.id.imageViewProfile);
         statisticsImage = findViewById(R.id.imageViewStats);
@@ -52,9 +53,11 @@ public class MainActivity extends AppCompatActivity {
         };
         getTime.run();
 
-        public void welcomeMessage() {
+    }
 
-        }
-
+    public void welcomeMessage() {
+        String name = getIntent().getStringExtra("username");
+        String message = "Welcome " + name + "!";
+        welcome.setText(message);
     }
 }
