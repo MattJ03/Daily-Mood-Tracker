@@ -1,4 +1,36 @@
 package com.example.dailymoodtracker;
 
-public class LogIn {
+import androidx.appcompat.app.AppCompatActivity;
+import android.os.Bundle;
+import android.Manifest;
+import android.view.View;
+import android.widget.Button;
+import android.widget.TextView;
+import android.widget.EditText;
+import android.widget.Toast;
+
+
+public class LogIn  extends AppCompatActivity {
+
+    EditText username, password;
+    Button logInBtn, tocBtn;
+
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.login);
+
+        username = findViewById(R.id.editTextUsername);
+        password = findViewById(R.id.editTextTextPassword);
+        logInBtn = findViewById(R.id.buttonLogIn);
+        tocBtn = findViewById(R.id.buttonTOC);
+
+        logInBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(username.getText().toString().isEmpty() && !password.getText().toString().isEmpty()) {
+                    Toast.makeText(LogIn.this, "Enter Username", Toast.LENGTH_LONG).show();
+                }
+            }
+        });
+    }
 }
