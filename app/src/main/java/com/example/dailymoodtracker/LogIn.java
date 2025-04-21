@@ -41,5 +41,12 @@ public class LogIn  extends AppCompatActivity {
                 }
             }
         });
+        tocBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(LogIn.this, TOC.class);
+                startActivity(intent);
+            }
+        });
     }
 }
