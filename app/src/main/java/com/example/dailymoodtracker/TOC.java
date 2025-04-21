@@ -28,7 +28,7 @@ public class TOC extends AppCompatActivity {
             tocBtn.setEnabled(isChecked);
         });
 
-        tocBtn.setOnClickListener(View -> {
+        tocBtn.setOnClickListener(view -> {
             Intent intent = new Intent(TOC.this, LogIn.class);
             startActivity(intent);
         });
