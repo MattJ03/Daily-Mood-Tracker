@@ -30,7 +30,6 @@ public class MainActivity extends AppCompatActivity {
     Handler handler = new Handler();
     ImageView settingsImage, profileImage, statisticsImage, homeImage;
     Runnable getTime;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -50,7 +49,12 @@ public class MainActivity extends AppCompatActivity {
                 time.setText(currentTime);
                 handler.postDelayed(getTime, 1000);
             }
-        }; getTime.run();
+        };
+        getTime.run();
+
+        public void welcomeMessage() {
+
+        }
 
     }
 }

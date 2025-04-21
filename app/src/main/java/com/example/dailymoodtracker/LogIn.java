@@ -14,7 +14,8 @@ import android.widget.Toast;
 
 public class LogIn  extends AppCompatActivity {
 
-    EditText username, password;
+    EditText username;
+    EditText password;
     Button logInBtn, tocBtn;
 
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,6 +38,7 @@ public class LogIn  extends AppCompatActivity {
                     Toast.makeText(LogIn.this, "Enter log in details", Toast.LENGTH_LONG).show();
                 } else {
                     Intent intent = new Intent(LogIn.this, MainActivity.class);
+                    intent.putExtra("username", username.getText().toString());
                     startActivity(intent);
                 }
             }
