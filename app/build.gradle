@@ -29,7 +29,10 @@ android {
 }
 
 dependencies {
+    implementation libs.room.common.jvm
     def fragment_version = "1.8.6"
+    def room_version = "2.7.0"
+    annotationProcessor "androidx.room:room-paging-android:2.7.0"
     implementation libs.appcompat
     implementation libs.material
     implementation libs.activity

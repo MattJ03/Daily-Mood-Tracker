@@ -34,7 +34,26 @@ public class EnterMoodFragment extends Fragment{
 
        smiley = view.findViewById(R.id.imageViewHappy);
        neutral = view.findViewById(R.id.imageViewNeutral);
+       sad = view.findViewById(R.id.imageViewSad);
+       home = view.findViewById(R.id.imageViewHome2);
+       settings = view.findViewById(R.id.imageViewSettings2);
+       stats = view.findViewById(R.id.imageViewStats2);
+       profile = view.findViewById(R.id.imageViewProfile2);
 
+       smiley.setOnClickListener(view1 -> {
+           selectedMood = "Happy";
+           Toast.makeText(getContext(), "You selected happy", Toast.LENGTH_LONG).show();
+       });
+
+       neutral.setOnClickListener( view1-> {
+           selectedMood = "Neutral";
+           Toast.makeText(getContext(), "You selected neutral", Toast.LENGTH_LONG).show();
+       });
+
+       sad.setOnClickListener(view1 -> {
+           selectedMood = "Sad";
+           Toast.makeText(getContext(), "You selected sad", Toast.LENGTH_LONG).show();
+       });
 
     }
 }
