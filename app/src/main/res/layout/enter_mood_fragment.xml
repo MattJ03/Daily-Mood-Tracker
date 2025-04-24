@@ -68,7 +68,7 @@
         app:layout_constraintVertical_bias="0.43" />
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/buttonEMF"
         android:layout_width="114dp"
         android:clickable="true"
         android:layout_height="58dp"
@@ -142,7 +142,7 @@
         app:srcCompat="@drawable/img_8" />
 
     <EditText
-        android:id="@+id/editTextText3"
+        android:id="@+id/editTextTextJE"
         android:layout_width="197dp"
         android:layout_height="123dp"
         android:background="@color/black"

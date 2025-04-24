@@ -13,6 +13,6 @@ public interface EnterMoodDAO {
     @Insert
     void insert(MoodEntry entry);
 
-    @Query("SELECT * FROM mood_entries ORDER BY timestamp DESC")
+    @Query("SELECT * FROM mood_entries ORDER BY id DESC")
     List<MoodEntry> getAllMoods();
 }

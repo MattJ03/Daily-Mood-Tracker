@@ -1,8 +1,10 @@
 package com.example.dailymoodtracker;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.content.Intent;
 import android.widget.TextView;
@@ -23,8 +25,10 @@ public class EnterMoodFragment extends Fragment{
     }
 
     ImageView smiley, neutral, sad, home, settings, stats, profile;
+    EditText notes;
+    Button buttonEnter;
 
-      @Override
+    @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         return inflater.inflate(R.layout.enter_mood_fragment, container, false);
     }
@@ -39,6 +43,8 @@ public class EnterMoodFragment extends Fragment{
        settings = view.findViewById(R.id.imageViewSettings2);
        stats = view.findViewById(R.id.imageViewStats2);
        profile = view.findViewById(R.id.imageViewProfile2);
+       buttonEnter = view.findViewById(R.id.buttonEMF);
+       notes = view.findViewById(R.id.editTextTextJE);
 
        smiley.setOnClickListener(view1 -> {
            selectedMood = "Happy";
@@ -53,7 +59,24 @@ public class EnterMoodFragment extends Fragment{
        sad.setOnClickListener(view1 -> {
            selectedMood = "Sad";
            Toast.makeText(getContext(), "You selected sad", Toast.LENGTH_LONG).show();
+
        });
+
+       buttonEnter.setOnClickListener(v -> {
+           if(notes.getText().toString().isEmpty()) {
+               Toast.makeText(getContext(), "Enter a note", Toast.LENGTH_LONG).show();
+           } else {
+               MoodEntry moodEntry = new MoodEntry(selectedMood, notes.getText().toString());
+
+               new Thread(() -> {
+                   MoodDatabase.getInstance(getContext()).moodDao().insert(moodEntry);
+               }).start();
+
+               Intent intent = new Intent(getContext(), MainActivity.class);
+           }
+       });
+
+
 
     }
 }

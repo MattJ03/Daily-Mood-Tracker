@@ -12,12 +12,11 @@ public class MoodEntry {
 
    public String mood;
    public String note;
-   public long timestamp;
 
-   public MoodEntry(String mood, String note, long timestamp) {
+   public MoodEntry(String mood, String note) {
        this.mood = mood;
        this.note = note;
-       this.timestamp = timestamp;
+
    }
 
 }

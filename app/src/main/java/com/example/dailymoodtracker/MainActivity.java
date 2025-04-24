@@ -52,6 +52,10 @@ public class MainActivity extends AppCompatActivity {
         };
         getTime.run();
 
+        homeImage.setOnClickListener(v -> {
+
+        });
+
     }
 
 }
