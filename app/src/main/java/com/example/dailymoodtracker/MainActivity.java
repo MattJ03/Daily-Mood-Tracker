@@ -7,6 +7,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
 
 import android.widget.EditText;
 import android.widget.Toast;
@@ -53,7 +55,11 @@ public class MainActivity extends AppCompatActivity {
         getTime.run();
 
         homeImage.setOnClickListener(v -> {
-
+            EnterMoodFragment fragment = new EnterMoodFragment();
+            getSupportFragmentManager()
+                    .beginTransaction()
+                    .replace(R.id.fragment_container, fragment)
+                    .commit();
         });
 
     }

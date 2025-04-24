@@ -16,7 +16,7 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import android.widget.Button;
 
-public class EnterMoodFragment extends Fragment{
+public class EnterMoodFragment extends Fragment {
 
     private String selectedMood;
 
