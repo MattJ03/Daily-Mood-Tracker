@@ -39,10 +39,10 @@ public class EnterMoodFragment extends Fragment {
        smiley = view.findViewById(R.id.imageViewHappy);
        neutral = view.findViewById(R.id.imageViewNeutral);
        sad = view.findViewById(R.id.imageViewSad);
-       home = view.findViewById(R.id.imageViewHome2);
-       settings = view.findViewById(R.id.imageViewSettings2);
-       stats = view.findViewById(R.id.imageViewStats2);
-       profile = view.findViewById(R.id.imageViewProfile2);
+       home = view.findViewById(R.id.imageViewHome);
+       settings = view.findViewById(R.id.imageViewSettings);
+       stats = view.findViewById(R.id.imageViewStats);
+       profile = view.findViewById(R.id.imageViewProfile);
        buttonEnter = view.findViewById(R.id.buttonEMF);
        notes = view.findViewById(R.id.editTextTextJE);
 
@@ -63,7 +63,7 @@ public class EnterMoodFragment extends Fragment {
        });
 
        buttonEnter.setOnClickListener(v -> {
-           if(notes.getText().toString().isEmpty()) {
+           if(notes.getText().toString().isEmpty() || selectedMood.isEmpty()) {
                Toast.makeText(getContext(), "Enter a note", Toast.LENGTH_LONG).show();
            } else {
                MoodEntry moodEntry = new MoodEntry(selectedMood, notes.getText().toString());
