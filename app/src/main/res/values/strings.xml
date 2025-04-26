@@ -51,4 +51,8 @@
         <item>Chile</item>
         <item>Peru</item>
     </string-array>
+    <string-array name="genders_array">
+        <item>Male</item>
+        <item>Female</item>
+    </string-array>
 </resources>
