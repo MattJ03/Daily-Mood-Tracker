@@ -2,6 +2,7 @@ package com.example.dailymoodtracker;
 
 import android.content.Context;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
 import android.widget.EditText;
@@ -46,6 +47,7 @@ public class EnterMoodFragment extends Fragment {
        buttonEnter = view.findViewById(R.id.buttonEMF);
        notes = view.findViewById(R.id.editTextTextJE);
 
+
        smiley.setOnClickListener(view1 -> {
            selectedMood = "Happy";
            Toast.makeText(getContext(), "You selected happy", Toast.LENGTH_LONG).show();
@@ -63,11 +65,15 @@ public class EnterMoodFragment extends Fragment {
        });
 
        buttonEnter.setOnClickListener(v -> {
-           if(notes.getText().toString().isEmpty() || selectedMood.isEmpty()) {
-               Toast.makeText(getContext(), "Enter a note", Toast.LENGTH_LONG).show();
-           } else {
+          if(selectedMood.isEmpty() && !notes.getText().toString().isEmpty()) {
+              Toast.makeText(getContext(), "Select an emoji", Toast.LENGTH_SHORT).show();
+          } else if(!selectedMood.isEmpty() && notes.getText().toString().isEmpty()) {
+              Toast.makeText(getContext(), "Enter a note", Toast.LENGTH_SHORT).show();
+          } else if(selectedMood.isEmpty() && notes.getText().toString().isEmpty()) {
+              Toast.makeText(getContext(), "Enter information", Toast.LENGTH_SHORT).show();
+          }
+          else {
                MoodEntry moodEntry = new MoodEntry(selectedMood, notes.getText().toString());
-
                new Thread(() -> {
                    MoodDatabase.getInstance(getContext()).moodDao().insert(moodEntry);
                }).start();
