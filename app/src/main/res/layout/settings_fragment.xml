@@ -19,8 +19,8 @@
 
     <Spinner
         android:id="@+id/countryDropDown"
-        android:layout_width="314dp"
-        android:layout_height="60dp"
+        android:layout_width="311dp"
+        android:layout_height="49dp"
         android:entries="@array/countries_array"
         android:spinnerMode="dropdown"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -31,7 +31,7 @@
         app:layout_constraintVertical_bias="0.207" />
 
     <TextView
-        android:id="@+id/textView2"
+        android:id="@+id/textViewSettingsTitle"
         android:layout_width="148dp"
         android:layout_height="45dp"
         android:text="Settings"
@@ -44,7 +44,7 @@
         app:layout_constraintVertical_bias="0.08" />
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/buttonLogOut"
         android:layout_width="122dp"
         android:layout_height="65dp"
         android:text="Log out"
@@ -56,19 +56,37 @@
         app:layout_constraintVertical_bias="0.894" />
 
     <EditText
-        android:id="@+id/editTextText2"
+        android:id="@+id/editTextSettingsEmail"
         android:layout_width="321dp"
         android:layout_height="53dp"
         android:ems="10"
         android:inputType="text"
-        android:text="Name"
-        tools:layout_editor_absoluteX="48dp"
-        tools:layout_editor_absoluteY="250dp" />
+        android:text=""
+        tools:layout_editor_absoluteX="50dp"
+        tools:layout_editor_absoluteY="237dp" />
 
     <Spinner
-        android:id="@+id/spinner2"
-        android:layout_width="330dp"
-        android:layout_height="60dp"
-        tools:layout_editor_absoluteX="35dp"
-        tools:layout_editor_absoluteY="396dp" />
+        android:id="@+id/gendersDropDown"
+        android:layout_width="313dp"
+        android:layout_height="48dp"
+        android:entries="@array/genders_array"
+        tools:layout_editor_absoluteX="50dp"
+        tools:layout_editor_absoluteY="341dp" />
+
+    <TextView
+        android:id="@+id/textViewNeedHelp"
+        android:layout_width="122dp"
+        android:layout_height="42dp"
+        android:text="Need Help?"
+        android:textSize="18dp"
+        tools:layout_editor_absoluteX="54dp"
+        tools:layout_editor_absoluteY="466dp" />
+
+    <Button
+        android:id="@+id/buttonSuicideHotline"
+        android:layout_width="148dp"
+        android:layout_height="51dp"
+        android:text="Suicide Hotline"
+        tools:layout_editor_absoluteX="198dp"
+        tools:layout_editor_absoluteY="466dp" />
 </androidx.constraintlayout.widget.ConstraintLayout>
