@@ -11,10 +11,10 @@
 
     <FrameLayout
         android:id="@+id/fragment_container"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        tools:layout_editor_absoluteX="16dp"
-        tools:layout_editor_absoluteY="0dp"/>
+        android:layout_width="311dp"
+        android:layout_height="735dp"
+        tools:layout_editor_absoluteX="69dp"
+        tools:layout_editor_absoluteY="131dp" />
 
     <ImageView
         android:id="@+id/imageViewLogo"
