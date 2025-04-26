@@ -12,7 +12,7 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Spinner;
 import android.content.Intent;
-
+import android.Manifest;
 public class SettingsFragment extends Fragment {
 
 

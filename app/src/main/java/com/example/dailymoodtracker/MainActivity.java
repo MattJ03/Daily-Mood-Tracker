@@ -1,9 +1,12 @@
 package com.example.dailymoodtracker;
 
+import android.Manifest.permission;
+import android.content.pm.PackageManager;
 import android.os.Bundle;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
@@ -19,7 +22,8 @@ import android.view.View;
 import android.widget.TextView;
 import android.os.Bundle;
 import android.os.Handler;
-
+import android.Manifest;
+import java.security.Permission;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
@@ -32,13 +36,20 @@ public class MainActivity extends AppCompatActivity {
     Handler handler = new Handler();
     ImageView settingsImage, profileImage, statisticsImage, homeImage;
     Runnable getTime;
+
+    int CALL_PHONE_PERMISSION = 1;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        time = findViewById(R.id.editTextTime);
+        if(ActivityCompat.checkSelfPermission(MainActivity.this, Manifest.permission.CALL_PHONE) != PackageManager.PERMISSION_GRANTED) {
+            ActivityCompat.requestPermissions(MainActivity.this, new String[]{permission.CALL_PHONE}, CALL_PHONE_PERMISSION);
+        }
 
+
+        time = findViewById(R.id.editTextTime);
         settingsImage = findViewById(R.id.imageViewSettings);
         profileImage = findViewById(R.id.imageViewProfile);
         statisticsImage = findViewById(R.id.imageViewStats);
