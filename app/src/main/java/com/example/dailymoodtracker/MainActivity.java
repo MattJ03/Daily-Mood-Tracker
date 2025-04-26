@@ -54,6 +54,11 @@ public class MainActivity extends AppCompatActivity {
         };
         getTime.run();
 
+        String username = getIntent().getStringExtra("username"); // get the username from login and send to settings fragment
+
+
+
+
         homeImage.setOnClickListener(v -> {
             EnterMoodFragment fragment = new EnterMoodFragment();
             getSupportFragmentManager()
@@ -64,6 +69,9 @@ public class MainActivity extends AppCompatActivity {
 
         settingsImage.setOnClickListener(v -> {
             SettingsFragment fragment = new SettingsFragment();
+            Bundle bundle = new Bundle();
+            bundle.putString("username", username);
+            fragment.setArguments(bundle);
             getSupportFragmentManager()
                     .beginTransaction()
                     .replace(R.id.fragment_container, fragment)

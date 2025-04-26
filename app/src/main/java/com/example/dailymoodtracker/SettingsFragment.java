@@ -33,7 +33,12 @@ public class SettingsFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
 
         countryDropDown = view.findViewById(R.id.countryDropDown);
-        username = view.findViewById(R.id.)
+        gendersDropDown = view.findViewById(R.id.gendersDropDown);
+        username = view.findViewById(R.id.editTextSettingsEmail);
+        suicideButton = view.findViewById(R.id.buttonSuicideHotline);
+        logOutBtn = view.findViewById(R.id.buttonLogOut);
+
+
     }
 
 }
