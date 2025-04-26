@@ -38,6 +38,16 @@ public class SettingsFragment extends Fragment {
         suicideButton = view.findViewById(R.id.buttonSuicideHotline);
         logOutBtn = view.findViewById(R.id.buttonLogOut);
 
+       Bundle bundle = getArguments();
+               if(bundle != null) {
+                  String usernameText = bundle.getString("username");
+                  username.setText(usernameText);
+               }
+
+               suicideButton.setOnClickListener(view2 -> {
+                   Intent intent = new Intent(Intent.ACTION_CALL);
+               });
+
 
     }
 

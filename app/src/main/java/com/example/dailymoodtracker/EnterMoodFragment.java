@@ -77,8 +77,6 @@ public class EnterMoodFragment extends Fragment {
                new Thread(() -> {
                    MoodDatabase.getInstance(getContext()).moodDao().insert(moodEntry);
                }).start();
-
-               Intent intent = new Intent(getContext(), MainActivity.class);
            }
        });
 
