@@ -54,8 +54,8 @@ public class SettingsFragment extends Fragment {
                });
 
         logOutBtn.setOnClickListener(view3 -> {
-            Intent intent = new Intent(SettingsFragment.class, LogIn.class);
-            startActivity(intent);
+          Intent intent = new Intent(getActivity(), LogIn.class);
+          startActivity(intent);
         });
 
     }

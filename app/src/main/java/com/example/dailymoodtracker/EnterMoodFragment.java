@@ -11,10 +11,14 @@ import android.content.Intent;
 import android.widget.TextView;
 import android.view.View;
 import android.widget.Toast;
+import androidx.appcompat.app.AppCompatActivity;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
+
 import android.widget.Button;
 
 public class EnterMoodFragment extends Fragment {
@@ -75,10 +79,22 @@ public class EnterMoodFragment extends Fragment {
               Toast.makeText(getContext(), "Enter information", Toast.LENGTH_SHORT).show();
           }
           else {
-               MoodEntry moodEntry = new MoodEntry(selectedMood, notes.getText().toString());
-               new Thread(() -> {
-                   MoodDatabase.getInstance(getContext()).moodDao().insert(moodEntry);
-               }).start();
+              MoodEntry moodEntry = new MoodEntry(selectedMood, notes.getText().toString());
+              new Thread(() -> {
+                  try {
+                      MoodDatabase.getInstance(getContext()).moodDao().insert(moodEntry);
+                      requireActivity().runOnUiThread(() -> {
+                          FragmentTransaction fragmentTransaction = requireActivity().getSupportFragmentManager().beginTransaction();
+                          fragmentTransaction.remove(EnterMoodFragment.this);
+                          fragmentTransaction.commit();
+
+                      });
+                  } catch (Exception e) {
+                      e.printStackTrace();
+                      requireActivity().runOnUiThread(() -> Toast.makeText(getContext(), "Error saving to Database", Toast.LENGTH_SHORT).show());
+                  }
+              }).start();
+
            }
        });
 
