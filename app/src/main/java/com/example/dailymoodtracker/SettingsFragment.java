@@ -53,6 +53,10 @@ public class SettingsFragment extends Fragment {
             startActivity(intent);
                });
 
+        logOutBtn.setOnClickListener(view3 -> {
+            Intent intent = new Intent(SettingsFragment.class, LogIn.class);
+            startActivity(intent);
+        });
 
     }
 
