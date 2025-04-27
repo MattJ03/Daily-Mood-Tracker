@@ -47,6 +47,8 @@ public class EnterMoodFragment extends Fragment {
        buttonEnter = view.findViewById(R.id.buttonEMF);
        notes = view.findViewById(R.id.editTextTextJE);
 
+       selectedMood = null;
+
 
        smiley.setOnClickListener(view1 -> {
            selectedMood = "Happy";
@@ -65,11 +67,11 @@ public class EnterMoodFragment extends Fragment {
        });
 
        buttonEnter.setOnClickListener(v -> {
-          if(selectedMood.isEmpty() && !notes.getText().toString().isEmpty()) {
+          if(selectedMood == null && !notes.getText().toString().isEmpty()) {
               Toast.makeText(getContext(), "Select an emoji", Toast.LENGTH_SHORT).show();
-          } else if(!selectedMood.isEmpty() && notes.getText().toString().isEmpty()) {
+          } else if(selectedMood != null && notes.getText().toString().isEmpty()) {
               Toast.makeText(getContext(), "Enter a note", Toast.LENGTH_SHORT).show();
-          } else if(selectedMood.isEmpty() && notes.getText().toString().isEmpty()) {
+          } else if(selectedMood == null && notes.getText().toString().isEmpty()) {
               Toast.makeText(getContext(), "Enter information", Toast.LENGTH_SHORT).show();
           }
           else {
