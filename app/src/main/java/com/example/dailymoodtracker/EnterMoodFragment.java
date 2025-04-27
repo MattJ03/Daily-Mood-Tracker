@@ -91,6 +91,7 @@ public class EnterMoodFragment extends Fragment {
                       });
                   } catch (Exception e) {
                       e.printStackTrace();
+                      Log.e("Error saving to database", "failed to save mood entry", e);
                       requireActivity().runOnUiThread(() -> Toast.makeText(getContext(), "Error saving to Database", Toast.LENGTH_SHORT).show());
                   }
               }).start();

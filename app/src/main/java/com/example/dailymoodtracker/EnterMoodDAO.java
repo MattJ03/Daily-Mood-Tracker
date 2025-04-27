@@ -1,5 +1,6 @@
 package com.example.dailymoodtracker;
 
+import androidx.lifecycle.LiveData;
 import androidx.room.Dao;
 import androidx.room.Entity;
 import androidx.room.Insert;
@@ -8,11 +9,12 @@ import androidx.room.Query;
 
 import java.util.List;
 
+@Dao
 public interface EnterMoodDAO {
 
     @Insert
     void insert(MoodEntry entry);
 
     @Query("SELECT * FROM mood_entries ORDER BY id DESC")
-    List<MoodEntry> getAllMoods();
+    LiveData<List<MoodEntry>> getAllMoods();  // Using LiveData to observe the changes
 }
