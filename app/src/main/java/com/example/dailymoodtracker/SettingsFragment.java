@@ -3,6 +3,8 @@ package com.example.dailymoodtracker;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
+
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.view.LayoutInflater;
@@ -13,8 +15,10 @@ import android.widget.ImageView;
 import android.widget.Spinner;
 import android.content.Intent;
 import android.Manifest;
+import android.os.BaseBundle;
 public class SettingsFragment extends Fragment {
 
+    int suicideNumber = 116123;
 
     public SettingsFragment() {
         //my empty constructor
@@ -38,14 +42,15 @@ public class SettingsFragment extends Fragment {
         suicideButton = view.findViewById(R.id.buttonSuicideHotline);
         logOutBtn = view.findViewById(R.id.buttonLogOut);
 
-       Bundle bundle = getArguments();
-               if(bundle != null) {
-                  String usernameText = bundle.getString("username");
-                  username.setText(usernameText);
-               }
+        Bundle bundle = getArguments();
+        if (bundle != null && bundle.getString("usernameText") != null) {
+            username.setText(bundle.getString("usernameText"));
+        }
 
-               suicideButton.setOnClickListener(view2 -> {
-                   Intent intent = new Intent(Intent.ACTION_CALL);
+        suicideButton.setOnClickListener(view2 -> {
+            Intent intent = new Intent(Intent.ACTION_CALL);
+            intent.setData(Uri.parse("tel:" + suicideNumber));
+            startActivity(intent);
                });
 
 

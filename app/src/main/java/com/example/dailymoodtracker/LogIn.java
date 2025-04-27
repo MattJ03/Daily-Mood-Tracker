@@ -38,8 +38,7 @@ public class LogIn  extends AppCompatActivity {
                     Toast.makeText(LogIn.this, "Enter log in details", Toast.LENGTH_LONG).show();
                 } else {
                     Intent intent = new Intent(LogIn.this, Welcome.class);
-                    intent.putExtra("username", username.getText().toString());
-                    intent.putExtra("username", username.getText().toString());
+                    intent.putExtra("usernameText", username.getText().toString());
                     startActivity(intent);
                 }
             }

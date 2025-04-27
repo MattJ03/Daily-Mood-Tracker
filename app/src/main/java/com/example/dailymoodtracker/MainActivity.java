@@ -45,8 +45,9 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         if(ActivityCompat.checkSelfPermission(MainActivity.this, Manifest.permission.CALL_PHONE) != PackageManager.PERMISSION_GRANTED) {
-            ActivityCompat.requestPermissions(MainActivity.this, new String[]{permission.CALL_PHONE}, CALL_PHONE_PERMISSION);
+            ActivityCompat.requestPermissions(MainActivity.this, new String[]{Manifest.permission.CALL_PHONE}, CALL_PHONE_PERMISSION);
         }
+
 
 
         time = findViewById(R.id.editTextTime);
@@ -65,7 +66,7 @@ public class MainActivity extends AppCompatActivity {
         };
         getTime.run();
 
-        String username = getIntent().getStringExtra("username"); // get the username from login and send to settings fragment
+        String username = getIntent().getStringExtra("usernameText"); // get the username from login and send to settings fragment
 
 
 
@@ -81,7 +82,7 @@ public class MainActivity extends AppCompatActivity {
         settingsImage.setOnClickListener(v -> {
             SettingsFragment fragment = new SettingsFragment();
             Bundle bundle = new Bundle();
-            bundle.putString("username", username);
+            bundle.putString("usernameText", username);
             fragment.setArguments(bundle);
             getSupportFragmentManager()
                     .beginTransaction()

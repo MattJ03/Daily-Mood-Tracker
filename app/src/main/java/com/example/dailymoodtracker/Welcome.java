@@ -19,19 +19,17 @@ public class Welcome extends AppCompatActivity {
 
         welcomeText = findViewById(R.id.editTextText);
 
-        welcomeMessage();
-
-       new Handler().postDelayed(() -> {
-           Intent intent = new Intent(Welcome.this, MainActivity.class);
-           startActivity(intent);
-           finish();
-       }, 4000);
-
-    }
-
-    protected void welcomeMessage() {
-        String name = getIntent().getStringExtra("username").trim();
-        String message =  "Welcome " + name + "!";
+        String name = getIntent().getStringExtra("usernameText").trim();
+        String message = "Welcome " + name + "!";
         welcomeText.setText(message);
+
+
+        new Handler().postDelayed(() -> {
+            Intent intent = new Intent(Welcome.this, MainActivity.class);
+            intent.putExtra("usernameText", name);
+            startActivity(intent);
+            finish();
+            }, 2000);
+
     }
 }
