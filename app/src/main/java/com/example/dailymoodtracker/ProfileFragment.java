@@ -44,9 +44,11 @@ public class ProfileFragment  extends Fragment {
         shareBtn = view.findViewById(R.id.buttonShare);
         profilePicture = view.findViewById(R.id.imageAddPicture);
 
-       //shareBtn.setOnClickListener(view -> {
-         //   Intent intent = new Intent(Intent.ACTION_SEND)
-       // });
+        shareBtn.setOnClickListener(view1 -> {
+         Intent intent = new Intent(Intent.ACTION_SEND);
+         startActivity(intent);
+
+        });
     }
 
 
