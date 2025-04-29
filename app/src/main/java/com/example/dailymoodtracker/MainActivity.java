@@ -90,6 +90,11 @@ public class MainActivity extends AppCompatActivity {
                     .commit();
         });
 
+        profileImage.setOnClickListener(v -> {
+            ProfileFragment fragment = new ProfileFragment();
+            getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, fragment).commit();
+        });
+
     }
 
 }
