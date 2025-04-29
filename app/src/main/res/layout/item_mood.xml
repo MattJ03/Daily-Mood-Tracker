@@ -2,16 +2,19 @@
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="wrap_content" android:padding="16dp">
 
-    <TextView
-        android:id="@+id/textViewMood"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
 
-        android:text="Mood" />
+    <ImageView
+        android:id="@+id/smallMoodImage"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
 
     <TextView
-        android:id="@+id/textViewNote"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Note" />
+        android:id="@+id/selectedMood"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+    <TextView
+        android:id="@+id/noteInList"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
 </LinearLayout>
