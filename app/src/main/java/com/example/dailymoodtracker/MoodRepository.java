@@ -20,7 +20,7 @@ public class MoodRepository {
         return enterMoodDao.getAllMoods();
     }
 
-    public MoodEntry insert(MoodEntry moodEntry) {
+    public void insert(MoodEntry moodEntry) {
         enterMoodDao.insert(moodEntry);
     }
 }
