@@ -29,7 +29,7 @@ public class MoodAdapter extends RecyclerView.Adapter<MoodAdapter.MoodViewHolder
     public MoodViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext())
                 .inflate(R.layout.item_mood, parent, false);
-        return new MoodViewHolder(view);
+        return new MoodViewHolder();
     }
 
     @Override
@@ -40,5 +40,18 @@ public class MoodAdapter extends RecyclerView.Adapter<MoodAdapter.MoodViewHolder
     }
 
     @Override
+    public int getItemCount() {
+        return moodList.size();
+    }
+
+    public static class MoodViewHolder extends RecyclerView.ViewHolder {
+        TextView moodText, moodNote;
+
+        public MoodViewHolder(@NonNull View itemView) {
+            super(itemView);
+            moodText = itemView.findViewById(R.id.selectedMood);
+            moodNote = itemView.findViewById(R.id.noteInList);
+        }
+    }
 
 }
