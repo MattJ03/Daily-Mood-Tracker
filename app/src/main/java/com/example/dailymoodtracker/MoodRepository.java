@@ -3,6 +3,8 @@ package com.example.dailymoodtracker;
 import android.app.Application;
 import android.content.Context;
 
+import androidx.lifecycle.LiveData;
+
 import java.util.List;
 
 public class MoodRepository {
@@ -14,5 +16,11 @@ public class MoodRepository {
       enterMoodDao = moodDatabase.moodDao();  //enter mood data takes the instance of the database
     }
 
-    public List<MoodEntry> getAllMoods()
+    public LiveData<List<MoodEntry>> getAllMoods() {
+        return enterMoodDao.getAllMoods();
+    }
+
+    public MoodEntry insert(MoodEntry moodEntry) {
+        enterMoodDao.insert(moodEntry);
+    }
 }
