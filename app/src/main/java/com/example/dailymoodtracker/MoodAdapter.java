@@ -11,6 +11,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.List;
 
+
 public class MoodAdapter extends RecyclerView.Adapter<MoodAdapter.MoodViewHolder> {
 
     private List<MoodEntry> moodList;
@@ -29,11 +30,11 @@ public class MoodAdapter extends RecyclerView.Adapter<MoodAdapter.MoodViewHolder
     public MoodViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext())
                 .inflate(R.layout.item_mood, parent, false);
-        return new MoodViewHolder();
+        return new MoodViewHolder(view);
     }
 
-    @Override
-    public void onBindViewModel(@NonNull MoodViewHolder holder, int position) {
+
+    public void onBindViewHolder(@NonNull MoodViewHolder holder, int position) {
         MoodEntry entry = moodList.get(position);
         holder.moodText.setText(entry.mood);
         holder.moodNote.setText(entry.note);
