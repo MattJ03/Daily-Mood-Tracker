@@ -2,6 +2,7 @@ package com.example.dailymoodtracker;
 
 import android.app.Application;
 import android.content.Context;
+import java.lang.*;
 
 import androidx.lifecycle.LiveData;
 
@@ -21,6 +22,6 @@ public class MoodRepository {
     }
 
     public void insert(MoodEntry moodEntry) {
-        enterMoodDao.insert(moodEntry);
+       new Thread(() -> enterMoodDao.insert(moodEntry)).start();
     }
 }
