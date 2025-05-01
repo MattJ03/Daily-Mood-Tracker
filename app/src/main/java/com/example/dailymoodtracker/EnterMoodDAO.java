@@ -15,6 +15,9 @@ public interface EnterMoodDAO {
     @Insert
     void insert(MoodEntry entry);
 
+    @Query("SELECT * from MOOD_ENTRIES")
+    List<MoodEntry> getAllMoodsSync();
+
     @Query("SELECT * FROM mood_entries ORDER BY id DESC")
     LiveData<List<MoodEntry>> getAllMoods();  // Using LiveData to observe the changes
 }

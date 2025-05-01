@@ -19,7 +19,7 @@ public class Welcome extends AppCompatActivity {
 
         welcomeText = findViewById(R.id.editTextText);
 
-        String name = getIntent().getStringExtra("usernameText").trim();
+        String name = getIntent().getStringExtra("usernameText");
         String message = "Welcome " + name + "!";
         welcomeText.setText(message);
 
