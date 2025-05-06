@@ -3,6 +3,7 @@ package com.example.dailymoodtracker;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -39,6 +40,8 @@ public class MoodAdapter extends RecyclerView.Adapter<MoodAdapter.MoodViewHolder
         MoodEntry entry = moodList.get(position);
         holder.moodText.setText(entry.mood);
         holder.moodNote.setText(entry.note);
+        holder.moodImage.setImageResource(entry.moodImage);
+
     }
 
     @Override
@@ -48,11 +51,13 @@ public class MoodAdapter extends RecyclerView.Adapter<MoodAdapter.MoodViewHolder
 
     public static class MoodViewHolder extends RecyclerView.ViewHolder {
         TextView moodText, moodNote;
+        ImageView moodImage;
 
         public MoodViewHolder(@NonNull View itemView) {
             super(itemView);
             moodText = itemView.findViewById(R.id.selectedMood);
             moodNote = itemView.findViewById(R.id.noteInList);
+            moodImage = itemView.findViewById(R.id.smallMoodImage);
         }
     }
 
