@@ -19,8 +19,6 @@ public class MoodEntry {
    public MoodEntry(String mood, String note) {
        this.mood = mood;
        this.note = note;
-       this.moodImage = moodImage;
-
    }
 
 }

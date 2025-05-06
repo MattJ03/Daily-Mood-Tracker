@@ -6,7 +6,7 @@ import androidx.room.RoomDatabase;
 
 import androidx.room.Database;
 
-@Database(entities = {MoodEntry.class}, version = 1)
+@Database(entities = {MoodEntry.class}, version = 2)
 public abstract class MoodDatabase extends RoomDatabase {
 
     private static MoodDatabase instance;
@@ -17,6 +17,7 @@ public abstract class MoodDatabase extends RoomDatabase {
         if (instance == null) {
             instance = Room.databaseBuilder(context.getApplicationContext(),
                             MoodDatabase.class, "mood_database")
+                    .fallbackToDestructiveMigration()
                     .build();
         }
         return instance;
