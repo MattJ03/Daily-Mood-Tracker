@@ -1,5 +1,6 @@
 package com.example.dailymoodtracker;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -40,7 +41,10 @@ public class MoodAdapter extends RecyclerView.Adapter<MoodAdapter.MoodViewHolder
         MoodEntry entry = moodList.get(position);
         holder.moodText.setText(entry.mood);
         holder.moodNote.setText(entry.note);
-        holder.moodImage.setImageResource(entry.moodImage);
+        int resId = holder.itemView.getContext().getResources().getIdentifier(entry.moodImage, "Drawable", holder.itemView.getContext().getPackageName());
+        if(resId != 0) {
+            holder.moodImage.setImageResource(resId);
+        }
 
     }
 
