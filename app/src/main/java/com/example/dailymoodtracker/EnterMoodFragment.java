@@ -57,19 +57,19 @@ public class EnterMoodFragment extends Fragment {
 
        smiley.setOnClickListener(view1 -> {
            selectedMood = "Happy";
-           selectedImage = "img_6.png";
+           selectedImage = "img_6";
            Toast.makeText(getContext(), "You selected happy", Toast.LENGTH_LONG).show();
        });
 
        neutral.setOnClickListener( view1-> {
            selectedMood = "Neutral";
-           selectedImage = "img_7.png";
+           selectedImage = "img_7";
            Toast.makeText(getContext(), "You selected neutral", Toast.LENGTH_LONG).show();
        });
 
        sad.setOnClickListener(view1 -> {
            selectedMood = "Sad";
-           selectedImage = "img_8.png";
+           selectedImage = "img_8";
            Toast.makeText(getContext(), "You selected sad", Toast.LENGTH_LONG).show();
 
        });

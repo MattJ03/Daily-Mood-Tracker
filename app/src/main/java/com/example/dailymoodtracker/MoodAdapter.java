@@ -44,6 +44,8 @@ public class MoodAdapter extends RecyclerView.Adapter<MoodAdapter.MoodViewHolder
         int resId = holder.itemView.getContext().getResources().getIdentifier(entry.moodImage, "Drawable", holder.itemView.getContext().getPackageName());
         if(resId != 0) {
             holder.moodImage.setImageResource(resId);
+        } else {
+            System.out.println("THIS IS BROKENNNNN");
         }
 
     }
