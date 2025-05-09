@@ -6,7 +6,7 @@ import androidx.room.RoomDatabase;
 
 import androidx.room.Database;
 
-@Database(entities = {MoodEntry.class}, version = 2)
+@Database(entities = {MoodEntry.class}, version = 3)
 public abstract class MoodDatabase extends RoomDatabase {
 
     private static MoodDatabase instance;
