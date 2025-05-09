@@ -14,9 +14,9 @@ public class MoodEntry {
 
    public String mood;
    public String note;
-   public int moodImage;
+   public String moodImage;
 
-   public MoodEntry(String mood, String note) {
+   public MoodEntry(String mood, String note, String moodImage) {
        this.mood = mood;
        this.note = note;
        this.moodImage = moodImage;

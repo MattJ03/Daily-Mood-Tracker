@@ -24,6 +24,7 @@ import android.widget.Button;
 public class EnterMoodFragment extends Fragment {
 
     private String selectedMood;
+    private String selectedImage;
 
     public EnterMoodFragment() {
         //Empty constructor which is needed for fragments
@@ -56,16 +57,19 @@ public class EnterMoodFragment extends Fragment {
 
        smiley.setOnClickListener(view1 -> {
            selectedMood = "Happy";
+           selectedImage = "img_6.png";
            Toast.makeText(getContext(), "You selected happy", Toast.LENGTH_LONG).show();
        });
 
        neutral.setOnClickListener( view1-> {
            selectedMood = "Neutral";
+           selectedImage = "img_7.png";
            Toast.makeText(getContext(), "You selected neutral", Toast.LENGTH_LONG).show();
        });
 
        sad.setOnClickListener(view1 -> {
            selectedMood = "Sad";
+           selectedImage = "img_8.png";
            Toast.makeText(getContext(), "You selected sad", Toast.LENGTH_LONG).show();
 
        });
@@ -79,7 +83,7 @@ public class EnterMoodFragment extends Fragment {
               Toast.makeText(getContext(), "Enter information", Toast.LENGTH_SHORT).show();
           }
           else {
-              MoodEntry moodEntry = new MoodEntry(selectedMood, notes.getText().toString());
+              MoodEntry moodEntry = new MoodEntry(selectedMood, notes.getText().toString(), selectedImage);
               new Thread(() -> {
                   try {
                       MoodDatabase.getInstance(getContext()).moodDao().insert(moodEntry);
