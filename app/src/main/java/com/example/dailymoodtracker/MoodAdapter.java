@@ -44,11 +44,13 @@ public class MoodAdapter extends RecyclerView.Adapter<MoodAdapter.MoodViewHolder
         holder.moodNote.setText(entry.note);
         Context context = holder.itemView.getContext();
         int resId = holder.itemView.getContext().getResources().getIdentifier(entry.moodImage, "drawable", holder.itemView.getContext().getPackageName());
-        if(resId != 0) {
-            holder.moodImage.setImageResource(resId);
-        } else {
-
-        }
+       if(resId != 0) {
+           try {
+               holder.moodImage.setImageResource(resId);
+           } catch (Exception e) {
+               System.out.println("Unable to set the image");
+           }
+       }
 
     }
 

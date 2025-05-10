@@ -49,6 +49,10 @@ public class ProfileFragment  extends Fragment {
          startActivity(intent);
 
         });
+
+        profilePicture.setOnClickListener(view2 -> {
+
+        })
     }
 
 
