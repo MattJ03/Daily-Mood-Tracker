@@ -15,9 +15,17 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.widget.Button;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.camera.core.CameraProvider;
+import androidx.camera.core.Preview;
+import androidx.camera.lifecycle.ProcessCameraProvider;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
+import androidx.camera.view.PreviewView;
+import androidx.camera.*;
+import androidx.camera.core.*;
+
+import com.google.common.util.concurrent.ListenableFuture;
 
 import java.util.zip.Inflater;
 
@@ -30,6 +38,8 @@ public class ProfileFragment  extends Fragment {
 
     Button shareBtn;
     ImageView profilePicture;
+    private PreviewView previewView;
+    private ListenableFuture<ProcessCameraProvider> cameraProviderFuture;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -43,6 +53,9 @@ public class ProfileFragment  extends Fragment {
 
         shareBtn = view.findViewById(R.id.buttonShare);
         profilePicture = view.findViewById(R.id.imageAddPicture);
+        previewView = view.findViewById(R.id.previewView);
+
+        cameraProviderFuture = ProcessCameraProvider.getInstance(requireContext());
 
         shareBtn.setOnClickListener(view1 -> {
          Intent intent = new Intent(Intent.ACTION_SEND);
@@ -50,9 +63,16 @@ public class ProfileFragment  extends Fragment {
 
         });
 
-        profilePicture.setOnClickListener(view2 -> {
+        cameraProviderFuture.addListener(() -> {
+            try {
+                ProcessCameraProvider cameraProvider = cameraProviderFuture.get();
+                bindPreview(cameraProvider, previewView);
+            } catch(Exception e) {
+                e.printStackTrace();
+            }
+        });
 
-        })
+
     }
 
 
