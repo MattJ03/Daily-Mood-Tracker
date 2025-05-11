@@ -31,6 +31,7 @@ import android.os.Bundle;
 
 import com.google.common.util.concurrent.ListenableFuture;
 
+import java.io.File;
 import java.util.zip.Inflater;
 
 
@@ -43,6 +44,7 @@ public class ProfileFragment  extends Fragment {
     Button shareBtn;
     ImageView profilePicture;
     private PreviewView previewView;
+    private ImageCapture imageCapture;
     private ListenableFuture<ProcessCameraProvider> cameraProviderFuture;
 
     @Override
@@ -88,8 +90,9 @@ public class ProfileFragment  extends Fragment {
     }
 
     private void bindPreview(ProcessCameraProvider cameraProvider, PreviewView previewView) {
-        Preview preview = new Preview.Builder()
-                .build();
+        Preview preview = new Preview.Builder().build();
+        imageCapture = new ImageCapture.Builder().build();
+
 
         CameraSelector cameraSelector = CameraSelector.DEFAULT_FRONT_CAMERA;
         preview.setSurfaceProvider(previewView.getSurfaceProvider());
@@ -98,7 +101,32 @@ public class ProfileFragment  extends Fragment {
         cameraProvider.bindToLifecycle(
                 getViewLifecycleOwner(),
                 cameraSelector,
-                preview
+                preview, imageCapture
+        );
+    }
+
+    private void takePhoto() {
+        if(imageCapture == null) {
+            return;
+        }
+        File fileOutput = new File(requireContext().getExternalFilesDir(null), System.currentTimeMillis() + ".jpg");
+
+        ImageCapture.OutputFileOptions outputOptions = new ImageCapture.OutputFileOptions.Builder(fileOutput).build();
+
+        imageCapture.takePicture(
+                outputOptions,
+                ContextCompat.getMainExecutor(requireContext()),
+                new ImageCapture.OnImageSavedCallback() {
+                    @Override
+                    public void onImageSaved(@NonNull ImageCapture.OutputFileResults outputFileResults) {
+                        Toast.makeText(getContext(), "Image saved as profile picture", Toast.LENGTH_SHORT).show();
+                    }
+
+                    @Override
+                    public void onError(@NonNull ImageCaptureException exception) {
+                        Toast.makeText(getContext(), "Image failed to save", Toast.LENGTH_SHORT).show();
+                    }
+                }
         );
     }
 
