@@ -131,6 +131,15 @@ public class ProfileFragment  extends Fragment {
 
                         Bundle args = new Bundle();
                         args.putParcelable("Profile photo", bitmap);
+                        SettingsFragment settingsFragment = new SettingsFragment();
+                        settingsFragment.setArguments(args);
+                        requireActivity().getSupportFragmentManager()
+                                .beginTransaction()
+                                .replace(R.id.fragment_container, settingsFragment)
+                                .addToBackStack(null)
+                                .commit();
+
+
                     }
 
                     @Override
