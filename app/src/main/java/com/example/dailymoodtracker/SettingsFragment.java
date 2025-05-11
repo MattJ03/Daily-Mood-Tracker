@@ -3,6 +3,7 @@ package com.example.dailymoodtracker;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
+import androidx.lifecycle.ViewModelProvider;
 
 import android.graphics.Bitmap;
 import android.net.Uri;
@@ -44,6 +45,8 @@ public class SettingsFragment extends Fragment {
         suicideButton = view.findViewById(R.id.buttonSuicideHotline);
         logOutBtn = view.findViewById(R.id.buttonLogOut);
         profilePicture = view.findViewById(R.id.profilePictureSettings);
+
+        ShareViewModel viewModel = new ViewModelProvider(requireActivity()).get(ShareViewModel.class);
 
         Bundle bundle = getArguments();
         if (bundle != null && bundle.getString("usernameText") != null) {

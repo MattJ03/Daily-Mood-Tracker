@@ -28,6 +28,8 @@ import androidx.fragment.app.FragmentTransaction;
 import androidx.camera.view.PreviewView;
 import androidx.camera.core.CameraSelector;
 import androidx.camera.core.*;
+import androidx.lifecycle.ViewModelProvider;
+
 import android.view.View;
 import android.Manifest;
 import android.os.Bundle;
@@ -69,6 +71,8 @@ public class ProfileFragment  extends Fragment {
 
 
         cameraProviderFuture = ProcessCameraProvider.getInstance(requireContext());
+
+        ShareViewModel viewModel = new ViewModelProvider(requireActivity()).get(ShareViewModel.class);
 
         profilePicture.setOnClickListener(view3 -> {
             previewView.setVisibility(View.VISIBLE);
