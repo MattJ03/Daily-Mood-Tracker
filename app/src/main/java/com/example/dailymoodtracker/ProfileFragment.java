@@ -18,12 +18,16 @@ import androidx.annotation.Nullable;
 import androidx.camera.core.CameraProvider;
 import androidx.camera.core.Preview;
 import androidx.camera.lifecycle.ProcessCameraProvider;
+import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.camera.view.PreviewView;
-import androidx.camera.*;
+import androidx.camera.core.CameraSelector;
 import androidx.camera.core.*;
+import android.view.View;
+import android.Manifest;
+import android.os.Bundle;
 
 import com.google.common.util.concurrent.ListenableFuture;
 
@@ -55,25 +59,49 @@ public class ProfileFragment  extends Fragment {
         profilePicture = view.findViewById(R.id.imageAddPicture);
         previewView = view.findViewById(R.id.previewView);
 
+
+
+
+
         cameraProviderFuture = ProcessCameraProvider.getInstance(requireContext());
 
+         profilePicture.setOnClickListener(view3 -> {
+             previewView.setVisibility(View.VISIBLE);
+             cameraProviderFuture = ProcessCameraProvider.getInstance(requireContext());
+             cameraProviderFuture.addListener(() -> {
+                 try {
+                     ProcessCameraProvider cameraProvider = cameraProviderFuture.get();
+                     bindPreview(cameraProvider, previewView);
+                 } catch (Exception e) {
+                     e.printStackTrace();
+                 }
+             }, ContextCompat.getMainExecutor(requireContext()));
+         });
+
+
+
         shareBtn.setOnClickListener(view1 -> {
-         Intent intent = new Intent(Intent.ACTION_SEND);
-         startActivity(intent);
+            Intent intent = new Intent(Intent.ACTION_SEND);
+            startActivity(intent);
 
         });
-
-        cameraProviderFuture.addListener(() -> {
-            try {
-                ProcessCameraProvider cameraProvider = cameraProviderFuture.get();
-                bindPreview(cameraProvider, previewView);
-            } catch(Exception e) {
-                e.printStackTrace();
-            }
-        });
-
-
     }
+
+    private void bindPreview(ProcessCameraProvider cameraProvider, PreviewView previewView) {
+        Preview preview = new Preview.Builder()
+                .build();
+
+        CameraSelector cameraSelector = CameraSelector.DEFAULT_FRONT_CAMERA;
+        preview.setSurfaceProvider(previewView.getSurfaceProvider());
+
+        cameraProvider.unbindAll();
+        cameraProvider.bindToLifecycle(
+                getViewLifecycleOwner(),
+                cameraSelector,
+                preview
+        );
+    }
+
 
 
 }
