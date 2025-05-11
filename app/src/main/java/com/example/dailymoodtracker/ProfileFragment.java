@@ -1,7 +1,10 @@
 package com.example.dailymoodtracker;
 
 import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
+import android.os.Handler;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
@@ -42,6 +45,8 @@ public class ProfileFragment  extends Fragment {
     }
 
     Button shareBtn, captureButton;
+    Handler handler = new Handler();
+    Runnable sendPicture;
     ImageView profilePicture;
     private PreviewView previewView;
     private ImageCapture imageCapture;
@@ -63,23 +68,19 @@ public class ProfileFragment  extends Fragment {
         captureButton = view.findViewById(R.id.buttonCapture);
 
 
-
-
         cameraProviderFuture = ProcessCameraProvider.getInstance(requireContext());
 
-         profilePicture.setOnClickListener(view3 -> {
-             previewView.setVisibility(View.VISIBLE);
-             cameraProviderFuture = ProcessCameraProvider.getInstance(requireContext());
-             cameraProviderFuture.addListener(() -> {
-                 try {
-                     ProcessCameraProvider cameraProvider = cameraProviderFuture.get();
-                     bindPreview(cameraProvider, previewView);
-                 } catch (Exception e) {
-                     e.printStackTrace();
-                 }
-             }, ContextCompat.getMainExecutor(requireContext()));
-         });
-
+        profilePicture.setOnClickListener(view3 -> {
+            previewView.setVisibility(View.VISIBLE);
+            cameraProviderFuture.addListener(() -> {
+                try {
+                    ProcessCameraProvider cameraProvider = cameraProviderFuture.get();
+                    bindPreview(cameraProvider, previewView);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }, ContextCompat.getMainExecutor(requireContext()));
+        });
 
 
         shareBtn.setOnClickListener(view1 -> {
@@ -90,6 +91,7 @@ public class ProfileFragment  extends Fragment {
 
         captureButton.setOnClickListener(view4 -> {
             takePhoto();
+
         });
     }
 
@@ -110,7 +112,7 @@ public class ProfileFragment  extends Fragment {
     }
 
     private void takePhoto() {
-        if(imageCapture == null) {
+        if (imageCapture == null) {
             return;
         }
         File fileOutput = new File(requireContext().getExternalFilesDir(null), System.currentTimeMillis() + ".jpg");
@@ -124,6 +126,11 @@ public class ProfileFragment  extends Fragment {
                     @Override
                     public void onImageSaved(@NonNull ImageCapture.OutputFileResults outputFileResults) {
                         Toast.makeText(getContext(), "Image saved as profile picture", Toast.LENGTH_SHORT).show();
+                        Bitmap bitmap = BitmapFactory.decodeFile(fileOutput.getAbsolutePath());
+                        profilePicture.setImageBitmap(bitmap);
+
+                        Bundle args = new Bundle();
+                        args.putParcelable("Profile photo", bitmap);
                     }
 
                     @Override
@@ -133,7 +140,5 @@ public class ProfileFragment  extends Fragment {
                 }
         );
     }
-
-
 
 }

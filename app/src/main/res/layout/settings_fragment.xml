@@ -47,14 +47,14 @@
         android:id="@+id/buttonLogOut"
         android:layout_width="122dp"
         android:layout_height="65dp"
-        android:text="Log out"
         android:backgroundTint="@color/orange"
+        android:text="Log out"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintHorizontal_bias="0.487"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.894" />
+        app:layout_constraintVertical_bias="0.888" />
 
     <EditText
         android:id="@+id/editTextSettingsEmail"
@@ -62,26 +62,25 @@
         android:layout_height="60dp"
         android:ems="10"
         android:inputType=""
-        android:textColor="@color/black"
         android:text=""
+        android:textColor="@color/black"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintHorizontal_bias="0.514"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.358" />
+        app:layout_constraintVertical_bias="0.307" />
 
     <Spinner
         android:id="@+id/gendersDropDown"
         android:layout_width="311dp"
         android:layout_height="48dp"
         android:entries="@array/genders_array"
-        app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintHorizontal_bias="0.41"
         app:layout_constraintLeft_toLeftOf="parent"
-        tools:layout_editor_absoluteX="52dp"
-        tools:layout_editor_absoluteY="341dp" />
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.418" />
 
     <TextView
         android:id="@+id/textViewNeedHelp"
@@ -90,22 +89,33 @@
         android:text="Need Help?"
         android:textSize="18dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintHorizontal_bias="0.16"
+        app:layout_constraintHorizontal_bias="0.131"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.689" />
+        app:layout_constraintVertical_bias="0.53" />
 
     <Button
         android:id="@+id/buttonSuicideHotline"
         android:layout_width="148dp"
         android:layout_height="51dp"
+        android:backgroundTint="@color/orange"
         android:text="Suicide Hotline"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintHorizontal_bias="0.745"
-        android:backgroundTint="@color/orange"
+        app:layout_constraintHorizontal_bias="0.684"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.698" />
+        app:layout_constraintVertical_bias="0.538" />
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="175dp"
+        android:layout_height="130dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.735"
+        app:srcCompat="@drawable/img_9" />
 </androidx.constraintlayout.widget.ConstraintLayout>
