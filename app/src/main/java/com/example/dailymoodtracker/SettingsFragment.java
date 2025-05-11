@@ -4,6 +4,7 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 
+import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
@@ -27,6 +28,7 @@ public class SettingsFragment extends Fragment {
     Spinner countryDropDown, gendersDropDown;
     EditText username;
     Button suicideButton, logOutBtn;
+    ImageView profilePicture;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -41,11 +43,16 @@ public class SettingsFragment extends Fragment {
         username = view.findViewById(R.id.editTextSettingsEmail);
         suicideButton = view.findViewById(R.id.buttonSuicideHotline);
         logOutBtn = view.findViewById(R.id.buttonLogOut);
+        profilePicture = view.findViewById(R.id.profilePictureSettings);
 
         Bundle bundle = getArguments();
         if (bundle != null && bundle.getString("usernameText") != null) {
             username.setText(bundle.getString("usernameText"));
         }
+
+        Bitmap bitmap = getArguments().getParcelable("Profile photo");
+        profilePicture.setImageBitmap(bitmap);
+
 
         suicideButton.setOnClickListener(view2 -> {
             Intent intent = new Intent(Intent.ACTION_CALL);
