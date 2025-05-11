@@ -41,7 +41,7 @@ public class ProfileFragment  extends Fragment {
 
     }
 
-    Button shareBtn;
+    Button shareBtn, captureButton;
     ImageView profilePicture;
     private PreviewView previewView;
     private ImageCapture imageCapture;
@@ -60,7 +60,7 @@ public class ProfileFragment  extends Fragment {
         shareBtn = view.findViewById(R.id.buttonShare);
         profilePicture = view.findViewById(R.id.imageAddPicture);
         previewView = view.findViewById(R.id.previewView);
-
+        captureButton = view.findViewById(R.id.buttonCapture);
 
 
 
@@ -86,6 +86,10 @@ public class ProfileFragment  extends Fragment {
             Intent intent = new Intent(Intent.ACTION_SEND);
             startActivity(intent);
 
+        });
+
+        captureButton.setOnClickListener(view4 -> {
+            takePhoto();
         });
     }
 
