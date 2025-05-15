@@ -12,6 +12,6 @@ public class ShareViewModel extends ViewModel {
    }
 
    public MutableLiveData<String> getPhotoPath() {
-       return getPhotoPath();
+       return photoPath;
    }
 }

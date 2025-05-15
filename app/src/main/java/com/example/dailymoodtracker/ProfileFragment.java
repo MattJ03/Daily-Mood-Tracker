@@ -130,19 +130,17 @@ public class ProfileFragment  extends Fragment {
                     @Override
                     public void onImageSaved(@NonNull ImageCapture.OutputFileResults outputFileResults) {
                         Toast.makeText(getContext(), "Image saved as profile picture", Toast.LENGTH_SHORT).show();
-                        Bitmap bitmap = BitmapFactory.decodeFile(fileOutput.getAbsolutePath());
+                        String filePath = fileOutput.getAbsolutePath();
+                        Bitmap bitmap = BitmapFactory.decodeFile(filePath);
                         profilePicture.setImageBitmap(bitmap);
 
-                        Bundle args = new Bundle();
-                        args.putParcelable("Profile photo", bitmap);
-                        SettingsFragment settingsFragment = new SettingsFragment();
-                        settingsFragment.setArguments(args);
-                        requireActivity().getSupportFragmentManager()
-                                .beginTransaction()
-                                .replace(R.id.fragment_container, settingsFragment)
-                                .addToBackStack(null)
-                                .commit();
 
+                        ShareViewModel viewModel = new ViewModelProvider(requireActivity()).get(ShareViewModel.class);
+                        viewModel.setPhotoPath(filePath);
+
+                        // Store the path in ViewModel
+                        ShareViewModel viewModel1 = new ViewModelProvider(requireActivity()).get(ShareViewModel.class);
+                        viewModel1.setPhotoPath(filePath);
 
                     }
 
