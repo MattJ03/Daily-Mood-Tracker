@@ -3,6 +3,7 @@ package com.example.dailymoodtracker;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
 import android.util.Log;
@@ -20,6 +21,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.camera.core.CameraProvider;
 import androidx.camera.core.Preview;
+import androidx.camera.core.processing.SurfaceProcessorNode;
 import androidx.camera.lifecycle.ProcessCameraProvider;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
@@ -52,6 +54,7 @@ public class ProfileFragment  extends Fragment {
     ImageView profilePicture;
     private PreviewView previewView;
     private ImageCapture imageCapture;
+    String number = "39492949";
     private ListenableFuture<ProcessCameraProvider> cameraProviderFuture;
 
     @Override
@@ -88,15 +91,17 @@ public class ProfileFragment  extends Fragment {
 
 
         shareBtn.setOnClickListener(view1 -> {
-            Intent intent = new Intent(Intent.ACTION_SEND);
+            Intent intent = new Intent(Intent.ACTION_SENDTO);
+            intent.setData(Uri.parse("smsto:" + number));
+            intent.putExtra("sms_body", "This is my profile");
             startActivity(intent);
-
         });
 
         captureButton.setOnClickListener(view4 -> {
             takePhoto();
 
         });
+
     }
 
     private void bindPreview(ProcessCameraProvider cameraProvider, PreviewView previewView) {
@@ -143,6 +148,8 @@ public class ProfileFragment  extends Fragment {
                         viewModel1.setPhotoPath(filePath);
 
                     }
+
+
 
                     @Override
                     public void onError(@NonNull ImageCaptureException exception) {
