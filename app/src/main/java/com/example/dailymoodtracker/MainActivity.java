@@ -79,6 +79,8 @@ public class MainActivity extends AppCompatActivity {
         };
         getTime.run();
 
+
+
         String username = getIntent().getStringExtra("usernameText"); // get the username from login and send to settings fragment
 
 
@@ -92,9 +94,6 @@ public class MainActivity extends AppCompatActivity {
         moodViewModel.getAllMoods().observe(this, moodEntryList -> {
             adapter.setMoodList(moodEntryList);
         });
-
-
-
 
 
         homeImage.setOnClickListener(v -> {
@@ -121,6 +120,18 @@ public class MainActivity extends AppCompatActivity {
             getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, fragment).commit();
         });
 
+        statisticsImage.setOnClickListener(v -> {
+            StatisticsFragment fragment = new StatisticsFragment();
+            Bundle bundle = new Bundle();
+            getSupportFragmentManager()
+                    .beginTransaction()
+                    .replace(R.id.fragment_container, fragment)
+                    .commit();
+        });
+
+
     }
+
+
 
 }
