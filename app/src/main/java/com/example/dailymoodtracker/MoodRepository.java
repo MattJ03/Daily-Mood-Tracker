@@ -24,4 +24,16 @@ public class MoodRepository {
     public void insert(MoodEntry moodEntry) {
        new Thread(() -> enterMoodDao.insert(moodEntry)).start();
     }
+
+    public LiveData<List<MoodEntry>> getAllHappyMoods() {
+        return enterMoodDao.getAllHappyMoods();
+    }
+
+    public LiveData<List<MoodEntry>> getAllNeutralMoods() {
+        return enterMoodDao.getAllNeutralMoods();
+    }
+
+    public LiveData<List<MoodEntry>> getAllSadMoods() {
+        return enterMoodDao.getAllSadMoods();
+    }
 }

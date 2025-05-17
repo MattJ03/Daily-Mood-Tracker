@@ -18,9 +18,7 @@ public StatisticsFragment() {
 
 EditText numberHappy, numberSad, numberNeutral;
 MoodViewModel moodViewModel;
-int[] happyCount;
-int[] neutralCount;
-int[] sadCount;
+
 
 @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -34,12 +32,17 @@ public void onViewCreated(@NonNull View view, @NonNull Bundle savedInstanceState
     numberNeutral = view.findViewById(R.id.editTextNumberNeutral);
     numberSad = view.findViewById(R.id.editTextNumberSad);
 
-    moodViewModel = new ViewModelProvider(this).get(MoodViewModel.class);
+    moodViewModel = new ViewModelProvider(requireActivity()).get(MoodViewModel.class);
 
-    moodViewModel.getAllMoods();
-
-
-
+    moodViewModel.getAllHappyMoods().observe(getViewLifecycleOwner(), happyMoods -> {
+        if(happyMoods != null) {
+            int happyCount = happyMoods.size();
+            numberHappy.setText("Happy Days: " + happyCount);
+        }
+        else {
+            numberHappy.setText("Happy count is 0");
+        }
+    });
 
 }
 }

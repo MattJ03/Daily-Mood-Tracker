@@ -20,7 +20,6 @@ public class MoodAdapter extends RecyclerView.Adapter<MoodAdapter.MoodViewHolder
     private List<MoodEntry> moodList;
 
     public MoodAdapter(List<MoodEntry> moodList) {
-
         this.moodList = moodList;
     }
 
@@ -37,28 +36,26 @@ public class MoodAdapter extends RecyclerView.Adapter<MoodAdapter.MoodViewHolder
         return new MoodViewHolder(view);
     }
 
-
+    @Override
     public void onBindViewHolder(@NonNull MoodViewHolder holder, int position) {
         MoodEntry entry = moodList.get(position);
         holder.moodText.setText(entry.mood);
         holder.moodNote.setText(entry.note);
+
         Context context = holder.itemView.getContext();
-        int resId = holder.itemView.getContext().getResources().getIdentifier(entry.moodImage, "drawable", holder.itemView.getContext().getPackageName());
-       if(resId != 0) {
-           try {
-               holder.moodImage.setImageResource(resId);
-           } catch (Exception e) {
-               System.out.println("Unable to set the image");
-           }
-       }
-
-
-
+        int resId = context.getResources().getIdentifier(entry.moodImage, "drawable", context.getPackageName());
+        if (resId != 0) {
+            try {
+                holder.moodImage.setImageResource(resId);
+            } catch (Exception e) {
+                Log.e("MoodAdapter", "Unable to set the image", e);
+            }
+        }
     }
 
     @Override
     public int getItemCount() {
-        return moodList.size();
+        return (moodList == null) ? 0 : moodList.size();
     }
 
     public static class MoodViewHolder extends RecyclerView.ViewHolder {
@@ -72,5 +69,4 @@ public class MoodAdapter extends RecyclerView.Adapter<MoodAdapter.MoodViewHolder
             moodImage = itemView.findViewById(R.id.smallMoodImage);
         }
     }
-
 }

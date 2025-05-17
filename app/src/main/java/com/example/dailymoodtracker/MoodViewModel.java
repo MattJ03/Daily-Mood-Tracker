@@ -26,6 +26,18 @@ public class MoodViewModel extends AndroidViewModel {
         return moodEntries; // Return the MutableLiveData that contains the mood entries
     }
 
+    public LiveData<List<MoodEntry>> getAllHappyMoods() {
+        return enterMoodDAO.getAllHappyMoods();
+    }
+
+    public LiveData<List<MoodEntry>> getAllNeutralMoods() {
+        return enterMoodDAO.getAllNeutralMoods();
+    }
+
+    public LiveData<List<MoodEntry>> getAllSadMoods() {
+        return enterMoodDAO.getAllSadMoods();
+    }
+
     // Load moods from database
     public void loadMoods() {
         executor.execute(() -> {
