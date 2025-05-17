@@ -8,6 +8,7 @@
         android:id="@+id/selectedMood"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:textSize="15dp"
         android:textColor="@color/white"/>
 
     <ImageView
@@ -19,5 +20,6 @@
         android:id="@+id/noteInList"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:textSize="15dp"
         android:textColor="@color/white" />
 </LinearLayout>
