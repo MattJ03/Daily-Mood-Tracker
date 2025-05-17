@@ -44,5 +44,23 @@ public void onViewCreated(@NonNull View view, @NonNull Bundle savedInstanceState
         }
     });
 
+    moodViewModel.getAllNeutralMoods().observe(getViewLifecycleOwner(), neutralMoods -> {
+        if(neutralMoods != null) {
+            int neutralCount = neutralMoods.size();
+            numberNeutral.setText("Neutral Days:" + neutralCount);
+        } else {
+            numberNeutral.setText("Neutral count is: 0");
+        }
+    });
+
+    moodViewModel.getAllNeutralMoods().observe(getViewLifecycleOwner(), sadMoods -> {
+        if(sadMoods != null) {
+            int sadCount = sadMoods.size();
+            numberSad.setText("Sad Days: " + sadCount);
+        } else {
+            numberSad.setText("Sad count is: " + 0);
+        }
+    });
+
 }
 }
