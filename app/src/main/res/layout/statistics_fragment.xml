@@ -18,26 +18,54 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.43" />
 
-    <LinearLayout
-        android:layout_width="343dp"
-        android:layout_height="126dp"
-        android:orientation="vertical"
-        tools:layout_editor_absoluteX="48dp"
-        tools:layout_editor_absoluteY="251dp" />
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="165dp"
+        android:layout_height="61dp"
+        android:text="Statistics"
+        android:textSize="25dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.089" />
 
     <LinearLayout
-        android:layout_width="376dp"
-        android:layout_height="126dp"
+        android:layout_width="331dp"
+        android:layout_height="129dp"
         android:orientation="vertical"
-        tools:layout_editor_absoluteX="16dp"
-        tools:layout_editor_absoluteY="90dp">
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.265">
 
     </LinearLayout>
 
     <LinearLayout
-        android:layout_width="352dp"
-        android:layout_height="130dp"
+        android:layout_width="336dp"
+        android:layout_height="124dp"
         android:orientation="vertical"
-        tools:layout_editor_absoluteX="39dp"
-        tools:layout_editor_absoluteY="420dp" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintHorizontal_bias="0.493"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.807">
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="327dp"
+        android:layout_height="122dp"
+        android:orientation="vertical"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        tools:layout_editor_absoluteX="44dp"
+        tools:layout_editor_absoluteY="325dp">
+
+    </LinearLayout>
+
 </androidx.constraintlayout.widget.ConstraintLayout>
