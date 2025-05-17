@@ -120,14 +120,13 @@ public class MainActivity extends AppCompatActivity {
             getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, fragment).commit();
         });
 
-        statisticsImage.setOnClickListener(v -> {
-            StatisticsFragment fragment = new StatisticsFragment();
-            Bundle bundle = new Bundle();
-            getSupportFragmentManager()
-                    .beginTransaction()
-                    .replace(R.id.fragment_container, fragment)
-                    .commit();
-        });
+         statisticsImage.setOnClickListener(view -> {
+             StatisticsFragment statisticsFragment = new StatisticsFragment();
+             getSupportFragmentManager()
+                     .beginTransaction()
+                     .replace(R.id.fragment_container, statisticsFragment)
+                     .commit();
+         });
 
 
     }
